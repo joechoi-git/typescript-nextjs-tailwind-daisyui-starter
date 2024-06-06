@@ -2,7 +2,7 @@
 
 export default function Home() {
     return (
-        <div>
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <article className="prose">
                 <h1>Garlic bread with cheese: What the science tells us</h1>
                 <p>
@@ -63,7 +63,6 @@ export default function Home() {
 
             <div className="overflow-x-auto">
                 <table className="table">
-                    {/* head */}
                     <thead>
                         <tr>
                             <th></th>
@@ -73,21 +72,18 @@ export default function Home() {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
                         <tr>
                             <th>1</th>
                             <td>Cy Ganderton</td>
                             <td>Quality Control Specialist</td>
                             <td>Blue</td>
                         </tr>
-                        {/* row 2 */}
                         <tr>
                             <th>2</th>
                             <td>Hart Hagerty</td>
                             <td>Desktop Support Technician</td>
                             <td>Purple</td>
                         </tr>
-                        {/* row 3 */}
                         <tr>
                             <th>3</th>
                             <td>Brice Swyre</td>
@@ -97,6 +93,6 @@ export default function Home() {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </main>
     );
 }

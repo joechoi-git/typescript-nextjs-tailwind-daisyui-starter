@@ -1,24 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TypeScript, Next.js, TailwindCSS, daisyUI Starter
 
-## Getting Started
+Check out \_\_\_
 
-First, run the development server:
+This project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+TailwindCSS, daisyUI, ES Lint, and Prettier are added to this project to help you save time.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+In the project directory, you can run:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### `yarn install`
+
+Installs dependencies.
+
+### `yarn dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn build`
+
+Builds the production version of the app.
+
+### `yarn analyze`
+
+Runs the Next.js bundle analyzer.
+
+### `yarn format`
+
+Formats the files with Prettier.
+
+### `yarn lint`
+
+Runs the ES Lint checker.
 
 ## Learn More
 
