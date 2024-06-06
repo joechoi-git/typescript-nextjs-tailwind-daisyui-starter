@@ -1,6 +1,6 @@
 # TypeScript, Next.js, TailwindCSS, daisyUI Starter
 
-Check out \_\_\_
+Check out https://typescript-nextjs-tailwind-daisyui-starter.vercel.app/
 
 This project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
