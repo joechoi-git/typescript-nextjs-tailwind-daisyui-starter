@@ -5,23 +5,17 @@ import Button from "./Button";
 
 export default function Buttons(): React.JSX.Element {
     const [clicked, setClicked] = React.useState(0);
-    /*
+    const [message, setMessage] = React.useState("Clicked 0 time.");
     const handleClick = () => {
-        console.log("button is clicked", clicked + 1);
+        setMessage(`Clicked ${clicked + 1} times.`);
         setClicked(clicked + 1);
-    }; */
+    };
     return (
         <section>
-            <Button
-                onClick={() => {
-                    console.log("button is clicked", clicked + 1);
-                    setClicked(clicked + 1);
-                }}
-            >
-                button 1
-            </Button>
-            <Button>button 2</Button>
-            <Button>button 3</Button>
+            <p>{message}</p>
+            <Button onClick={handleClick}>button 1</Button>
+            <Button onClick={handleClick}>button 2</Button>
+            <Button onClick={handleClick}>button 3</Button>
         </section>
     );
 }
