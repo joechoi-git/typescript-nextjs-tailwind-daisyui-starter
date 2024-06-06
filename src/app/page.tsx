@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import Buttons from "../components/Buttons";
+
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -14,8 +16,9 @@ export default function Home() {
                     But a recent study shows that the celebrated appetizer may be linked to a series
                     of rabies cases springing up around the country.
                 </p>
+                <Buttons />
             </article>
-            <button className="btn btn-primary">Button</button>
+
             <div className="carousel w-full">
                 <div id="item1" className="carousel-item w-full">
                     <img
