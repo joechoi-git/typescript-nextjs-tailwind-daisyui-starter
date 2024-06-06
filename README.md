@@ -4,7 +4,7 @@ Check out https://typescript-nextjs-tailwind-daisyui-starter.vercel.app/
 
 This project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-TailwindCSS, daisyUI, ES Lint, and Prettier are added to this project to help you save time.
+TailwindCSS, daisyUI, Jest, ES Lint, and Prettier are added to this project to help you save time.
 
 ## Available Scripts
 
@@ -37,6 +37,10 @@ Formats the files with Prettier.
 ### `yarn lint`
 
 Runs the ES Lint checker.
+
+### `yarn test`
+
+Runs the Jest unit testing.
 
 ## Learn More
 
