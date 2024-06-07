@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Buttons from "../components/Buttons";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <ThemeSwitcher />
             <article className="prose">
                 <h1>Garlic bread with cheese: What the science tells us</h1>
                 <p>
