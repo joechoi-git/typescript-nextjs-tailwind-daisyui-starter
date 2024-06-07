@@ -12,8 +12,8 @@ const ThemeSwitcher: React.FC = () => {
     };
 
     return (
-        <article className="prose">
-            <h3>Switch Theme</h3>
+        <section className="prose mb-12">
+            <h2>Switch Theme</h2>
             <select
                 value={savedTheme ? savedTheme : theme}
                 onChange={(e) => handleSetTheme(e.target.value as Theme)}
@@ -52,7 +52,7 @@ const ThemeSwitcher: React.FC = () => {
                 <option value="nord">nord</option>
                 <option value="sunset">sunset</option>
             </select>
-        </article>
+        </section>
     );
 };
 
