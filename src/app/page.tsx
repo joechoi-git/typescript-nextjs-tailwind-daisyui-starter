@@ -33,6 +33,7 @@ export default function Home() {
                 <h3>Flowbite Buttons</h3>
                 <Button>Flowbite Button 1</Button>
                 <Button>Flowbite Button 2</Button>
+                <Button>Flowbite Button 3</Button>
             </article>
 
             <Buttons />
