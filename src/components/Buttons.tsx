@@ -13,9 +13,11 @@ export default function Buttons(): React.JSX.Element {
     return (
         <section>
             <p>{message}</p>
-            <Button onClick={handleClick}>button 1</Button>
-            <Button onClick={handleClick}>button 2</Button>
-            <Button onClick={handleClick}>button 3</Button>
+            <div className="flex">
+                <Button onClick={handleClick}>button 1</Button>
+                <Button onClick={handleClick}>button 2</Button>
+                <Button onClick={handleClick}>button 3</Button>
+            </div>
         </section>
     );
 }
