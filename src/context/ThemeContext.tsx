@@ -11,20 +11,28 @@ type Theme = "light" | "dark" | "";
 
 type IAuthContext = {
     theme: Theme;
-    setTheme: (newState: Theme) => void;
+    // eslint-disable-next-line no-unused-vars
+    setTheme: (arg: Theme) => void;
 };
 
 const ThemeContext = React.createContext<IAuthContext>({
-    theme: "dark",
+    theme: "",
     setTheme: () => {}
 });
 
 const ThemeProvider = ({ children }: Props) => {
     // initialize with cookie
-    const savedTheme: Theme = getCookie("theme") as Theme;
+    // const savedTheme: Theme = getCookie("theme") as Theme;
+    // console.log("ThemeProvider", savedTheme);
 
     // initialize context with cookie values
-    const [theme, setTheme] = React.useState(savedTheme);
+    const [theme, setTheme] = React.useState<Theme>("");
+
+    React.useEffect(() => {
+        const savedTheme: Theme = getCookie("theme") as Theme;
+        console.log("ThemeProvider useEffect", savedTheme);
+        setTheme(savedTheme);
+    }, []);
 
     return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };
