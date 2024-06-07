@@ -4,6 +4,7 @@
 import React from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
+import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function Home() {
@@ -27,6 +28,8 @@ export default function Home() {
                 </p>
                 <Buttons />
             </article>
+
+            <Progress />
 
             <div className="carousel w-full">
                 <div id="item1" className="carousel-item w-full">
