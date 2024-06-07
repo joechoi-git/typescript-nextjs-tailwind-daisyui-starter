@@ -29,7 +29,14 @@ export default function Home() {
                 <Buttons />
             </article>
 
-            <Progress />
+            <section className="flex">
+                <Progress value={0} />
+                <Progress value={20} />
+                <Progress value={40} />
+                <Progress value={60} />
+                <Progress value={80} />
+                <Progress value={100} />
+            </section>
 
             <div className="carousel w-full">
                 <div id="item1" className="carousel-item w-full">
