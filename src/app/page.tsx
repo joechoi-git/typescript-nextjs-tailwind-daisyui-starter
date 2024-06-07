@@ -6,6 +6,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
 import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import { Button } from "flowbite-react";
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);
@@ -27,6 +28,10 @@ export default function Home() {
                     of rabies cases springing up around the country.
                 </p>
                 <Buttons />
+
+                <h3>Flowbite Buttons</h3>
+                <Button>Flowbite Button 1</Button>
+                <Button>Flowbite Button 2</Button>
             </article>
 
             <section className="flex">
