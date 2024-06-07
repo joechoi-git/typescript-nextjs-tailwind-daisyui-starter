@@ -17,6 +17,7 @@ const ThemeSwitcher: React.FC = () => {
             <select
                 value={savedTheme ? savedTheme : theme}
                 onChange={(e) => handleSetTheme(e.target.value as Theme)}
+                className="border-solid border-2 p-2 border-primary"
             >
                 <option value="system">system</option>
                 <option value="light">light</option>

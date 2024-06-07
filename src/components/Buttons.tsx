@@ -11,7 +11,7 @@ export default function Buttons(): React.JSX.Element {
         setClicked(clicked + 1);
     };
     return (
-        <section>
+        <section className="p-4">
             <p>{message}</p>
             <div className="flex justify-center w-full py-2 gap-2">
                 <Button onClick={handleClick}>button 1</Button>
