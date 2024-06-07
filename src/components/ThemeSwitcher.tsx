@@ -1,22 +1,23 @@
 import React from "react";
-/*
-import { useTheme } from "../context/ThemeContext";
+import { ThemeContext, Theme } from "../context/ThemeContext";
+import { setCookie } from "../utils/Cookies";
 
 const ThemeSwitcher: React.FC = () => {
-    const { theme, toggleTheme } = useTheme();
+    const { theme, setTheme } = React.useContext(ThemeContext);
+
+    const handleSetTheme = (newTheme: Theme): void => {
+        console.log("handleSetTheme", newTheme);
+        setTheme(newTheme);
+        setCookie("theme", newTheme);
+    };
 
     return (
-        <button onClick={toggleTheme}>
-            Switch to {theme === "light" ? "dark" : "light"} theme
-        </button>
+        <select value={theme} onChange={(e) => handleSetTheme(e.target.value as Theme)}>
+            <option value="cupcake">Cupcake</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+        </select>
     );
-};
-
-export default ThemeSwitcher;
-*/
-
-const ThemeSwitcher: React.FC = () => {
-    return <h1>theme switcher</h1>;
 };
 
 export default ThemeSwitcher;

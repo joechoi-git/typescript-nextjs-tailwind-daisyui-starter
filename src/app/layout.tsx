@@ -17,10 +17,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ThemeProvider>
-            <html lang="en" suppressHydrationWarning>
-                <body className={inter.className}>{children}</body>
-            </html>
-        </ThemeProvider>
+        <html lang="en" suppressHydrationWarning>
+            <body className={inter.className}>
+                <ThemeProvider>{children}</ThemeProvider>
+            </body>
+        </html>
     );
 }

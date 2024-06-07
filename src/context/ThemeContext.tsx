@@ -7,7 +7,7 @@ type Props = {
     children?: React.ReactNode;
 };
 
-type Theme = "light" | "dark" | "";
+type Theme = "light" | "dark" | "cupcake" | "";
 
 type IAuthContext = {
     theme: Theme;
@@ -21,13 +21,8 @@ const ThemeContext = React.createContext<IAuthContext>({
 });
 
 const ThemeProvider = ({ children }: Props) => {
-    // initialize with cookie
-    // const savedTheme: Theme = getCookie("theme") as Theme;
-    // console.log("ThemeProvider", savedTheme);
-
     // initialize context with cookie values
     const [theme, setTheme] = React.useState<Theme>("");
-
     React.useEffect(() => {
         const savedTheme: Theme = getCookie("theme") as Theme;
         console.log("ThemeProvider useEffect", savedTheme);
@@ -38,3 +33,4 @@ const ThemeProvider = ({ children }: Props) => {
 };
 
 export { ThemeContext, ThemeProvider };
+export type { Theme };
