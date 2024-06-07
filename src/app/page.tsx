@@ -8,7 +8,6 @@ import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);
-    console.log("Home theme", theme);
     return (
         <main
             data-theme={theme}

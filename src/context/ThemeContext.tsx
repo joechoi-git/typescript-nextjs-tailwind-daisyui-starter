@@ -1,13 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { getCookie } from "../utils/Cookies";
 
 type Props = {
     children?: React.ReactNode;
 };
 
-type Theme = "light" | "dark" | "cupcake" | "";
+type Theme = "system" | "light" | "dark" | "cupcake";
 
 type IAuthContext = {
     theme: Theme;
@@ -16,16 +15,23 @@ type IAuthContext = {
 };
 
 const ThemeContext = React.createContext<IAuthContext>({
-    theme: "",
+    theme: "system",
     setTheme: () => {}
 });
 
 const ThemeProvider = ({ children }: Props) => {
     // initialize context with cookie values
-    const [theme, setTheme] = React.useState<Theme>("");
+    const [theme, setTheme] = React.useState<Theme>("system");
+
     React.useEffect(() => {
-        const savedTheme: Theme = getCookie("theme") as Theme;
-        console.log("ThemeProvider useEffect", savedTheme);
+        let savedTheme: Theme = localStorage.getItem("theme") as Theme;
+        if (!savedTheme || savedTheme === "system") {
+            if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                savedTheme = "dark";
+            } else {
+                savedTheme = "light";
+            }
+        }
         setTheme(savedTheme);
     }, []);
 
