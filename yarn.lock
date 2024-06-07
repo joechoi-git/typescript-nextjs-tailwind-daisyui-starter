@@ -1022,7 +1022,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/typography@npm:^0.5.13":
+"@tailwindcss/typography@npm:latest":
   version: 0.5.13
   resolution: "@tailwindcss/typography@npm:0.5.13"
   dependencies:
@@ -7012,7 +7012,7 @@ __metadata:
   resolution: "typescript-nextjs-tailwind-daisyui-starter@workspace:."
   dependencies:
     "@next/bundle-analyzer": "npm:^14"
-    "@tailwindcss/typography": "npm:^0.5.13"
+    "@tailwindcss/typography": "npm:latest"
     "@testing-library/jest-dom": "npm:^6"
     "@testing-library/react": "npm:^16"
     "@types/node": "npm:^20"

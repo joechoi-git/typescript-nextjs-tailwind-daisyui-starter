@@ -1,10 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 
+import React from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function Home() {
+    const { theme } = React.useContext(ThemeContext);
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main
+            data-theme={theme}
+            className="flex min-h-screen flex-col items-center justify-between p-24"
+        >
+            <ThemeSwitcher />
             <article className="prose">
                 <h1>Garlic bread with cheese: What the science tells us</h1>
                 <p>
