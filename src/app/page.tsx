@@ -16,6 +16,7 @@ export default function Home() {
             className="flex min-h-screen flex-col items-center justify-between p-24"
         >
             <ThemeSwitcher />
+
             <article className="prose">
                 <h1>Garlic bread with cheese: What the science tells us</h1>
                 <p>
@@ -34,7 +35,9 @@ export default function Home() {
                 <Button>Flowbite Button 2</Button>
             </article>
 
-            <section className="flex">
+            <Buttons />
+
+            <section className="flex p-4">
                 <Progress value={0} />
                 <Progress value={20} />
                 <Progress value={40} />
@@ -43,7 +46,7 @@ export default function Home() {
                 <Progress value={100} />
             </section>
 
-            <div className="carousel w-full">
+            <div className="carousel w-full p-4">
                 <div id="item1" className="carousel-item w-full">
                     <img
                         src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
@@ -88,7 +91,7 @@ export default function Home() {
                 </a>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto p-4">
                 <table className="table">
                     <thead>
                         <tr>
