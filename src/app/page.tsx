@@ -1,12 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Image from "next/image";
 import React from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
 import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-import Grid from "../components/Grid";
+import AgGrid from "../components/AgGrid";
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);
@@ -32,7 +32,7 @@ export default function Home() {
 
             <Buttons />
 
-            <Grid className="w-full h-[500px] ag-theme-quartz" />
+            <AgGrid className="w-full h-[500px] ag-theme-quartz" />
 
             <section className="flex p-4">
                 <Progress value={0} />
@@ -45,31 +45,39 @@ export default function Home() {
 
             <div className="carousel w-full p-4">
                 <div id="item1" className="carousel-item w-full">
-                    <img
+                    <Image
                         src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
                         className="w-full"
                         alt="1"
+                        width={1000}
+                        height={250}
                     />
                 </div>
                 <div id="item2" className="carousel-item w-full">
-                    <img
+                    <Image
                         src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
                         className="w-full"
                         alt="2"
+                        width={1000}
+                        height={250}
                     />
                 </div>
                 <div id="item3" className="carousel-item w-full">
-                    <img
+                    <Image
                         src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
                         className="w-full"
                         alt="3"
+                        width={1000}
+                        height={250}
                     />
                 </div>
                 <div id="item4" className="carousel-item w-full">
-                    <img
+                    <Image
                         src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
                         className="w-full"
                         alt="4"
+                        width={1000}
+                        height={250}
                     />
                 </div>
             </div>
