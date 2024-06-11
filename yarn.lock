@@ -5,7 +5,7 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@adobe/css-tools@npm:^4.3.2":
+"@adobe/css-tools@npm:^4.4.0":
   version: 4.4.0
   resolution: "@adobe/css-tools@npm:4.4.0"
   checksum: 10c0/d65ddc719389bf469097df80fb16a8af48a973dea4b57565789d70ac8e7ab4987e6dc0095da3ed5dc16c1b6f8960214a7590312eeda8abd543d91fd0f59e6c94
@@ -1104,11 +1104,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^6":
-  version: 6.4.5
-  resolution: "@testing-library/jest-dom@npm:6.4.5"
+"@tanstack/react-table@npm:^8.17.3":
+  version: 8.17.3
+  resolution: "@tanstack/react-table@npm:8.17.3"
   dependencies:
-    "@adobe/css-tools": "npm:^4.3.2"
+    "@tanstack/table-core": "npm:8.17.3"
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 10c0/d1ab321f189f1c7e20336c0516f8155a3d46aea74cc7ec849239b7323cf3e4fe919585489de3512eab36fceb7c4eae245e58235e6fcb5f112379411d801605fd
+  languageName: node
+  linkType: hard
+
+"@tanstack/table-core@npm:8.17.3":
+  version: 8.17.3
+  resolution: "@tanstack/table-core@npm:8.17.3"
+  checksum: 10c0/e45f0f74b645689c762dd8c1042726d804726a488130fb2d36e24384bd813a601ed4d20abff3b4ba1bb1a648d14029f65d7fa8728099e0fd9f2702b51dc586c2
+  languageName: node
+  linkType: hard
+
+"@testing-library/jest-dom@npm:^6":
+  version: 6.4.6
+  resolution: "@testing-library/jest-dom@npm:6.4.6"
+  dependencies:
+    "@adobe/css-tools": "npm:^4.4.0"
     "@babel/runtime": "npm:^7.9.2"
     aria-query: "npm:^5.0.0"
     chalk: "npm:^3.0.0"
@@ -1133,7 +1152,7 @@ __metadata:
       optional: true
     vitest:
       optional: true
-  checksum: 10c0/4cfdd44e2abab2b9d399c47cbfe686729bb65160d7df0f9e2329aaaea7702f6e852a9eefb29b468f00c1e5a5274b684f8cac76959d33299dfa909ba007ea191d
+  checksum: 10c0/8f369c1d27f8128b3794c6b9af5f5b794a47af4670819756e9f4e7cf69e277b30e8b89c548277a279918f648c85c6c7874f1a867e52edd4edb0629a2cf377daa
   languageName: node
   linkType: hard
 
@@ -1875,16 +1894,16 @@ __metadata:
   linkType: hard
 
 "browserslist@npm:^4.22.2":
-  version: 4.23.0
-  resolution: "browserslist@npm:4.23.0"
+  version: 4.23.1
+  resolution: "browserslist@npm:4.23.1"
   dependencies:
-    caniuse-lite: "npm:^1.0.30001587"
-    electron-to-chromium: "npm:^1.4.668"
+    caniuse-lite: "npm:^1.0.30001629"
+    electron-to-chromium: "npm:^1.4.796"
     node-releases: "npm:^2.0.14"
-    update-browserslist-db: "npm:^1.0.13"
+    update-browserslist-db: "npm:^1.0.16"
   bin:
     browserslist: cli.js
-  checksum: 10c0/8e9cc154529062128d02a7af4d8adeead83ca1df8cd9ee65a88e2161039f3d68a4d40fea7353cab6bae4c16182dec2fdd9a1cf7dc2a2935498cee1af0e998943
+  checksum: 10c0/eb47c7ab9d60db25ce2faca70efeb278faa7282a2f62b7f2fa2f92e5f5251cf65144244566c86559419ff4f6d78f59ea50e39911321ad91f3b27788901f1f5e9
   languageName: node
   linkType: hard
 
@@ -1974,10 +1993,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001579, caniuse-lite@npm:^1.0.30001587":
-  version: 1.0.30001629
-  resolution: "caniuse-lite@npm:1.0.30001629"
-  checksum: 10c0/e95136a423c0c5e7f9d026ef3f9be8d06cadc4c83ad65eedfaeaba6b5eb814489ea186e90bae1085f3be7348577e25f8fe436b384c2f983324ad8dea4a7dfe1d
+"caniuse-lite@npm:^1.0.30001579, caniuse-lite@npm:^1.0.30001629":
+  version: 1.0.30001632
+  resolution: "caniuse-lite@npm:1.0.30001632"
+  checksum: 10c0/960af2c7ed4367d6b72a164ecb9050ea9eada28c61e2134baaa712862364b9b6b41247c3ff4c2a497f91e879c5a1c9c7713080ac2d0c72eb4bee5ef2f4e24d62
   languageName: node
   linkType: hard
 
@@ -2557,10 +2576,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.4.668":
-  version: 1.4.792
-  resolution: "electron-to-chromium@npm:1.4.792"
-  checksum: 10c0/ade79be9394a193030bf9df5119e7255df5a12680f41e5cde55dae072a11b1f86a7a2b449a893c68f2e69f0dbcd95a19f1b3c22f6f6c5f052828aac7591a288f
+"electron-to-chromium@npm:^1.4.796":
+  version: 1.4.798
+  resolution: "electron-to-chromium@npm:1.4.798"
+  checksum: 10c0/0941f9d9e28d7c26fd96a429126782c79811ea0b96f3dc8953cfef83b7f0d3856cbfe0ceb3fae9e619d49ddb990e2c3505147c663ac9cd8e8189c3d2da658edc
   languageName: node
   linkType: hard
 
@@ -4778,11 +4797,11 @@ __metadata:
   linkType: hard
 
 "jiti@npm:^1.21.0":
-  version: 1.21.3
-  resolution: "jiti@npm:1.21.3"
+  version: 1.21.6
+  resolution: "jiti@npm:1.21.6"
   bin:
     jiti: bin/jiti.js
-  checksum: 10c0/5de8b6a30e02e665ff03a925e43110097082e2e695cbf958ee8b2ba18fa894e3688862bb2ea52356fbefd924050d28b729b0c4efdaf4b05bf24f2c52ad0e778d
+  checksum: 10c0/05b9ed58cd30d0c3ccd3c98209339e74f50abd9a17e716f65db46b6a35812103f6bde6e134be7124d01745586bca8cc5dae1d0d952267c3ebe55171949c32e56
   languageName: node
   linkType: hard
 
@@ -4988,9 +5007,9 @@ __metadata:
   linkType: hard
 
 "lilconfig@npm:^3.0.0, lilconfig@npm:~3.1.1":
-  version: 3.1.1
-  resolution: "lilconfig@npm:3.1.1"
-  checksum: 10c0/311b559794546894e3fe176663427326026c1c644145be9e8041c58e268aa9328799b8dfe7e4dd8c6a4ae305feae95a1c9e007db3569f35b42b6e1bc8274754c
+  version: 3.1.2
+  resolution: "lilconfig@npm:3.1.2"
+  checksum: 10c0/f059630b1a9bddaeba83059db00c672b64dc14074e9f232adce32b38ca1b5686ab737eb665c5ba3c32f147f0002b4bee7311ad0386a9b98547b5623e87071fbe
   languageName: node
   linkType: hard
 
@@ -5998,11 +6017,11 @@ __metadata:
   linkType: hard
 
 "prettier@npm:^3":
-  version: 3.3.1
-  resolution: "prettier@npm:3.3.1"
+  version: 3.3.2
+  resolution: "prettier@npm:3.3.2"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/c25a709c9f0be670dc6bcb190b622347e1dbeb6c3e7df8b0711724cb64d8647c60b839937a4df4df18e9cfb556c2b08ca9d24d9645eb5488a7fc032a2c4d5cb3
+  checksum: 10c0/39ed27d17f0238da6dd6571d63026566bd790d3d0edac57c285fbab525982060c8f1e01955fe38134ab10f0951a6076da37f015db8173c02f14bc7f0803a384c
   languageName: node
   linkType: hard
 
@@ -7158,6 +7177,7 @@ __metadata:
   dependencies:
     "@next/bundle-analyzer": "npm:^14"
     "@tailwindcss/typography": "npm:latest"
+    "@tanstack/react-table": "npm:^8.17.3"
     "@testing-library/jest-dom": "npm:^6"
     "@testing-library/react": "npm:^16"
     "@types/node": "npm:^20"
@@ -7250,7 +7270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"update-browserslist-db@npm:^1.0.13":
+"update-browserslist-db@npm:^1.0.16":
   version: 1.0.16
   resolution: "update-browserslist-db@npm:1.0.16"
   dependencies:
@@ -7578,11 +7598,11 @@ __metadata:
   linkType: hard
 
 "yaml@npm:^2.3.4, yaml@npm:~2.4.2":
-  version: 2.4.3
-  resolution: "yaml@npm:2.4.3"
+  version: 2.4.5
+  resolution: "yaml@npm:2.4.5"
   bin:
     yaml: bin.mjs
-  checksum: 10c0/b4a9dea34265f000402c909144ac310be42c4526dfd16dff1aee2b04a0d94051713651c0cd2b0a3d8109266997422120f16a7934629d12f22dc215839ebbeccf
+  checksum: 10c0/e1ee78b381e5c710f715cc4082fd10fc82f7f5c92bd6f075771d20559e175616f56abf1c411f545ea0e9e16e4f84a83a50b42764af5f16ec006328ba9476bb31
   languageName: node
   linkType: hard
 
