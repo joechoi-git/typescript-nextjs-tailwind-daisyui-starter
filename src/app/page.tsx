@@ -6,6 +6,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
 import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import Grid from "../components/Grid";
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);
@@ -30,6 +31,8 @@ export default function Home() {
             </article>
 
             <Buttons />
+
+            <Grid className="w-full h-[500px] ag-theme-quartz" />
 
             <section className="flex p-4">
                 <Progress value={0} />
