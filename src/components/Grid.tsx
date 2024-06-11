@@ -1,9 +1,9 @@
 import * as React from "react";
 import { AgGridReact } from "@ag-grid-community/react";
 import { ModuleRegistry, ColDef } from "@ag-grid-community/core";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import "@ag-grid-community/styles/ag-grid.css";
 import "@ag-grid-community/styles/ag-theme-quartz.css";
-import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 ModuleRegistry.registerModules([ClientSideRowModelModule]);
 
@@ -108,7 +108,7 @@ export default function Grid({ ...rest }: Props): React.JSX.Element {
     }, []);
 
     return (
-        <div className="ag-theme-quartz" {...rest}>
+        <div {...rest}>
             <AgGridReact
                 rowData={rowData}
                 columnDefs={columnDefs}
