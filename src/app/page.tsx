@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import dynamic from "next/dynamic";
 import React from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
 import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
-import Grid from "../components/Grid";
+
+// disabled SSR render because the table data is randomly generated
+const Grid = dynamic(() => import("../components/Grid"), { ssr: false });
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);

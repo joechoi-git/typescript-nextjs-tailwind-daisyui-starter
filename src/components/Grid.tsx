@@ -1,12 +1,13 @@
-/* eslint-disable import/named */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from "react";
 
 import {
+    // eslint-disable-next-line import/named
     Column,
+    // eslint-disable-next-line import/named
     ColumnDef,
+    // eslint-disable-next-line import/named
     PaginationState,
+    // eslint-disable-next-line import/named
     Table,
     flexRender,
     getCoreRowModel,
@@ -30,6 +31,7 @@ export default function Grid({ ...rest }: Props): React.JSX.Element {
             {
                 accessorKey: "firstName",
                 cell: (info) => info.getValue(),
+                header: () => <span>First Name</span>,
                 footer: (props) => props.column.id
             },
             {
@@ -123,6 +125,7 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                                                     : "",
                                                 onClick: header.column.getToggleSortingHandler()
                                             }}
+                                            aria-hidden="true"
                                         >
                                             {flexRender(
                                                 header.column.columnDef.header,
@@ -150,7 +153,7 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                             <tr key={row.id}>
                                 {row.getVisibleCells().map((cell) => {
                                     return (
-                                        <td key={cell.id} suppressHydrationWarning={true}>
+                                        <td key={cell.id}>
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
@@ -239,7 +242,7 @@ function Filter({ column, table }: { column: Column<any, any>; table: Table<any>
     const columnFilterValue = column.getFilterValue();
 
     return typeof firstValue === "number" ? (
-        <div className="flex space-x-2" onClick={(e) => e.stopPropagation()}>
+        <div className="flex space-x-2">
             <input
                 type="number"
                 value={(columnFilterValue as [number, number])?.[0] ?? ""}

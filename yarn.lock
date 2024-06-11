@@ -484,13 +484,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^8.4.1":
-  version: 8.4.1
-  resolution: "@faker-js/faker@npm:8.4.1"
-  checksum: 10c0/4f2aecddcfdc2cc8b50b2d15d1e37302a7c7a5bbd184ae910a9d271bc11248533ca74dcdd4a9ccbe20410553e7af0f6a4d334c5b955635e09a32ddf4a64942d4
-  languageName: node
-  linkType: hard
-
 "@humanwhocodes/config-array@npm:^0.11.14":
   version: 0.11.14
   resolution: "@humanwhocodes/config-array@npm:0.11.14"
@@ -7037,7 +7030,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "typescript-nextjs-tailwind-daisyui-starter@workspace:."
   dependencies:
-    "@faker-js/faker": "npm:^8.4.1"
     "@next/bundle-analyzer": "npm:^14"
     "@tailwindcss/typography": "npm:latest"
     "@tanstack/react-table": "npm:^8.17.3"
