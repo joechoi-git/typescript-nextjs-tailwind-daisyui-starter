@@ -1,4 +1,4 @@
-import { faker } from "@faker-js/faker";
+import names from "../sample/Names.json";
 
 export type Person = {
     firstName: string;
@@ -18,18 +18,22 @@ const range = (len: number) => {
     return arr;
 };
 
+const getRandom = (min: number, max: number): number => {
+    const floatRandom = Math.random();
+    const difference = max - min;
+    const random = Math.round(difference * floatRandom);
+    const randomWithinRange = random + min;
+    return randomWithinRange;
+};
+
 const newPerson = (): Person => {
     return {
-        firstName: faker.person.firstName(),
-        lastName: faker.person.lastName(),
-        age: faker.number.int(40),
-        visits: faker.number.int(1000),
-        progress: faker.number.int(100),
-        status: faker.helpers.shuffle<Person["status"]>([
-            "relationship",
-            "complicated",
-            "single"
-        ])[0]!
+        firstName: names.data[getRandom(0, names.data.length)],
+        lastName: names.data[getRandom(0, names.data.length)],
+        age: getRandom(0, 100),
+        visits: getRandom(0, 1000),
+        progress: getRandom(0, 100),
+        status: ["relationship", "complicated", "single"][getRandom(0, 3)] as Person["status"]
     };
 };
 

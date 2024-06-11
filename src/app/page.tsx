@@ -32,7 +32,7 @@ export default function Home() {
 
             <Buttons />
 
-            <Grid className="w-full h-[500px]" />
+            <Grid className="w-full h-[500px] overflow-scroll" />
 
             <section className="flex p-4">
                 <Progress value={0} />

@@ -145,13 +145,13 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                         </tr>
                     ))}
                 </thead>
-                <tbody>
+                <tbody suppressHydrationWarning={true}>
                     {table.getRowModel().rows.map((row) => {
                         return (
                             <tr key={row.id}>
                                 {row.getVisibleCells().map((cell) => {
                                     return (
-                                        <td key={cell.id} suppressHydrationWarning={true}>
+                                        <td key={cell.id}>
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
