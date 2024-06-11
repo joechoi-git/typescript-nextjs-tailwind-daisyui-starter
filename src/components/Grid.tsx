@@ -16,7 +16,7 @@ import {
     useReactTable
 } from "@tanstack/react-table";
 
-import { makeData, Person } from "./makeData";
+import { MakeData, Person } from "../utils/MakeData";
 
 interface Props {
     [rest: string]: any;
@@ -63,8 +63,8 @@ export default function Grid({ ...rest }: Props): React.JSX.Element {
         []
     );
 
-    const [data, setData] = React.useState(() => makeData(100000));
-    const refreshData = () => setData(() => makeData(100000));
+    const [data, setData] = React.useState(() => MakeData(100000));
+    const refreshData = () => setData(() => MakeData(100000));
 
     return (
         <div {...rest}>
@@ -94,7 +94,7 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
     const table = useReactTable({
         columns,
         data,
-        debugTable: true,
+        debugTable: false,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
@@ -108,8 +108,7 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
     });
 
     return (
-        <div className="p-2">
-            <div className="h-2" />
+        <>
             <table>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
@@ -145,13 +144,13 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                         </tr>
                     ))}
                 </thead>
-                <tbody suppressHydrationWarning={true}>
+                <tbody>
                     {table.getRowModel().rows.map((row) => {
                         return (
                             <tr key={row.id}>
                                 {row.getVisibleCells().map((cell) => {
                                     return (
-                                        <td key={cell.id}>
+                                        <td key={cell.id} suppressHydrationWarning={true}>
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
@@ -230,8 +229,7 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                 Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
                 {table.getRowCount().toLocaleString()} Rows
             </div>
-            <pre>{JSON.stringify(table.getState().pagination, null, 2)}</pre>
-        </div>
+        </>
     );
 }
 
