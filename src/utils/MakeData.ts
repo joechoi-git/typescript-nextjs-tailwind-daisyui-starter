@@ -18,7 +18,7 @@ const newPerson = (): Person => {
         age: getRandom(1, 100),
         visits: getRandom(0, 1000),
         progress: getRandom(0, 100),
-        status: ["relationship", "complicated", "single"][getRandom(0, 3)] as Person["status"]
+        status: ["relationship", "complicated", "single"][getRandom(0, 2)] as Person["status"]
     };
 };
 

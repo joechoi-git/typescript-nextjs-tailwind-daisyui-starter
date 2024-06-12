@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from "react";
 
 import {
@@ -7,6 +8,8 @@ import {
     ColumnDef,
     // eslint-disable-next-line import/named
     PaginationState,
+    // eslint-disable-next-line import/named
+    ColumnOrderState,
     // eslint-disable-next-line import/named
     Table,
     flexRender,
@@ -18,106 +21,97 @@ import {
 } from "@tanstack/react-table";
 
 import { MakeData, Person } from "../utils/MakeData";
+import { shuffleArray } from "../utils/Helper";
+
+const defaultColumns: ColumnDef<Person>[] = [
+    {
+        accessorKey: "firstName",
+        cell: (info) => info.getValue(),
+        header: () => <span>First Name</span>,
+        footer: (props) => props.column.id
+    },
+    {
+        accessorFn: (row) => row.lastName,
+        id: "lastName",
+        cell: (info) => info.getValue(),
+        header: () => <span>Last Name</span>,
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "age",
+        header: () => "Age",
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "visits",
+        header: () => <span>Visits</span>,
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "status",
+        header: "Status",
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "progress",
+        header: "Profile Progress",
+        footer: (props) => props.column.id
+    }
+];
 
 interface Props {
     [rest: string]: any;
 }
 
-export default function Grid({ ...rest }: Props): React.JSX.Element {
-    const rerender = React.useReducer(() => ({}), {})[1];
-
-    const columns = React.useMemo<ColumnDef<Person>[]>(
-        () => [
-            {
-                accessorKey: "firstName",
-                cell: (info) => info.getValue(),
-                header: () => <span>First Name</span>,
-                footer: (props) => props.column.id
-            },
-            {
-                accessorFn: (row) => row.lastName,
-                id: "lastName",
-                cell: (info) => info.getValue(),
-                header: () => <span>Last Name</span>,
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "age",
-                header: () => "Age",
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "visits",
-                header: () => <span>Visits</span>,
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "status",
-                header: "Status",
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "progress",
-                header: "Profile Progress",
-                footer: (props) => props.column.id
-            }
-        ],
-        []
-    );
-
-    const [data, setData] = React.useState(() => MakeData(100000));
-    const refreshData = () => setData(() => MakeData(100000));
-
-    return (
-        <div {...rest}>
-            <MyTable
-                {...{
-                    data,
-                    columns
-                }}
-            />
-            <hr />
-            <div>
-                <button onClick={() => rerender()}>Force Rerender</button>
-            </div>
-            <div>
-                <button onClick={() => refreshData()}>Refresh Data</button>
-            </div>
-        </div>
-    );
-}
-
-function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[] }) {
+export default function GridV3({ ...rest }: Props): React.JSX.Element {
+    const [data, setData] = React.useState(() => MakeData(1000));
+    const [columns] = React.useState(() => [...defaultColumns]);
+    const [columnVisibility, setColumnVisibility] = React.useState({});
+    const [columnOrder, setColumnOrder] = React.useState<ColumnOrderState>([]);
     const [pagination, setPagination] = React.useState<PaginationState>({
         pageIndex: 0,
         pageSize: 10
     });
 
+    const rerender = () => setData(() => MakeData(1000));
+
+    const randomizeColumns = () => {
+        table.setColumnOrder(shuffleArray(table.getAllLeafColumns().map((d) => d.id)));
+    };
+
     const table = useReactTable({
-        columns,
         data,
-        debugTable: false,
+        columns,
+        state: {
+            columnVisibility,
+            columnOrder,
+            pagination
+        },
+        onColumnVisibilityChange: setColumnVisibility,
+        onColumnOrderChange: setColumnOrder,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         onPaginationChange: setPagination,
-        //no need to pass pageCount or rowCount with client-side pagination as it is calculated automatically
-        state: {
-            pagination
-        }
-        // autoResetPageIndex: false, // turn off page index reset when sorting or filtering
+        debugTable: true,
+        debugHeaders: true,
+        debugColumns: true
     });
 
     return (
-        <>
-            <table>
+        <div {...rest}>
+            <table className="border-separate border-spacing-2 border border-primary rounded">
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <th key={header.id} colSpan={header.colSpan}>
+                                    <th
+                                        key={header.id}
+                                        colSpan={header.colSpan}
+                                        className="border border-secondary rounded p-2"
+                                    >
                                         <div
                                             {...{
                                                 className: header.column.getCanSort()
@@ -148,91 +142,144 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                     ))}
                 </thead>
                 <tbody>
-                    {table.getRowModel().rows.map((row) => {
+                    {table.getRowModel().rows.map((row) => (
+                        <tr key={row.id}>
+                            {row.getVisibleCells().map((cell) => (
+                                <td key={cell.id} className="border border-primary rounded p-2">
+                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+                <tfoot>
+                    {table.getFooterGroups().map((footerGroup) => (
+                        <tr key={footerGroup.id}>
+                            {footerGroup.headers.map((header) => (
+                                <th key={header.id} colSpan={header.colSpan}>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                              header.column.columnDef.footer,
+                                              header.getContext()
+                                          )}
+                                </th>
+                            ))}
+                        </tr>
+                    ))}
+                </tfoot>
+            </table>
+
+            <div className="flex space-between gap-4 items-start mt-8">
+                <div className="inline-block p-2 border border-secondary rounded">
+                    <div className="px-1 border-b border-secondary">
+                        <label>
+                            <input
+                                {...{
+                                    type: "checkbox",
+                                    checked: table.getIsAllColumnsVisible(),
+                                    onChange: table.getToggleAllColumnsVisibilityHandler()
+                                }}
+                            />{" "}
+                            Toggle All
+                        </label>
+                    </div>
+                    {table.getAllLeafColumns().map((column) => {
                         return (
-                            <tr key={row.id}>
-                                {row.getVisibleCells().map((cell) => {
-                                    return (
-                                        <td key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
-                                        </td>
-                                    );
-                                })}
-                            </tr>
+                            <div key={column.id} className="px-1">
+                                <label>
+                                    <input
+                                        {...{
+                                            type: "checkbox",
+                                            checked: column.getIsVisible(),
+                                            onChange: column.getToggleVisibilityHandler()
+                                        }}
+                                    />{" "}
+                                    {column.id}
+                                </label>
+                            </div>
                         );
                     })}
-                </tbody>
-            </table>
-            <div className="h-2" />
-            <div className="flex items-center gap-2">
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.firstPage()}
-                    disabled={!table.getCanPreviousPage()}
-                >
-                    {"<<"}
-                </button>
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                >
-                    {"<"}
-                </button>
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                >
-                    {">"}
-                </button>
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.lastPage()}
-                    disabled={!table.getCanNextPage()}
-                >
-                    {">>"}
-                </button>
-                <span className="flex items-center gap-1">
-                    <div>Page</div>
-                    <strong>
-                        {table.getState().pagination.pageIndex + 1} of{" "}
-                        {table.getPageCount().toLocaleString()}
-                    </strong>
-                </span>
-                <span className="flex items-center gap-1">
-                    | Go to page:
-                    <input
-                        type="number"
-                        defaultValue={table.getState().pagination.pageIndex + 1}
+                </div>
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={() => rerender()}
+                        className="border border-secondary rounded p-1"
+                    >
+                        Regenerate
+                    </button>
+                    <button
+                        onClick={() => randomizeColumns()}
+                        className="border border-secondary rounded p-1"
+                    >
+                        Shuffle Columns
+                    </button>
+                    <button
+                        className="border border-secondary rounded p-1"
+                        onClick={() => table.firstPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {"<<"}
+                    </button>
+                    <button
+                        className="border border-secondary rounded p-1"
+                        onClick={() => table.previousPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {"<"}
+                    </button>
+                    <button
+                        className="border border-secondary rounded p-1"
+                        onClick={() => table.nextPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {">"}
+                    </button>
+                    <button
+                        className="border border-secondary rounded p-1"
+                        onClick={() => table.lastPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {">>"}
+                    </button>
+                    <span className="flex items-center gap-1">
+                        <div>Page</div>
+                        <strong>
+                            {table.getState().pagination.pageIndex + 1} of{" "}
+                            {table.getPageCount().toLocaleString()}
+                        </strong>
+                    </span>
+                    <span className="flex items-center gap-1">
+                        | Go to page:
+                        <input
+                            type="number"
+                            defaultValue={table.getState().pagination.pageIndex + 1}
+                            onChange={(e) => {
+                                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                                table.setPageIndex(page);
+                            }}
+                            className="border border-secondary rounded w-16"
+                        />
+                    </span>
+                    <select
+                        value={table.getState().pagination.pageSize}
                         onChange={(e) => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                            table.setPageIndex(page);
+                            table.setPageSize(Number(e.target.value));
                         }}
-                        className="border p-1 rounded w-16"
-                    />
-                </span>
-                <select
-                    value={table.getState().pagination.pageSize}
-                    onChange={(e) => {
-                        table.setPageSize(Number(e.target.value));
-                    }}
-                >
-                    {[10, 20, 30, 40, 50].map((pageSize) => (
-                        <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                        </option>
-                    ))}
-                </select>
+                    >
+                        {[10, 20, 30, 40, 50].map((pageSize) => (
+                            <option key={pageSize} value={pageSize}>
+                                Show {pageSize}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
+                    {table.getRowCount().toLocaleString()} Rows
+                </div>
             </div>
-            <div>
-                Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
-                {table.getRowCount().toLocaleString()} Rows
-            </div>
-        </>
+        </div>
     );
 }
 
