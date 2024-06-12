@@ -65,8 +65,8 @@ export default function Grid({ ...rest }: Props): React.JSX.Element {
         []
     );
 
-    const [data, setData] = React.useState(() => MakeData(100000));
-    const refreshData = () => setData(() => MakeData(100000));
+    const [data, setData] = React.useState(() => MakeData(1000));
+    const refreshData = () => setData(() => MakeData(1000));
 
     return (
         <div {...rest}>
