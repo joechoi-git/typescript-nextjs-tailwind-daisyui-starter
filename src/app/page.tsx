@@ -7,6 +7,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import Buttons from "../components/Buttons";
 import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import { Button } from "flowbite-react";
 
 // disabled SSR render because the table data is randomly generated
 const Grid = dynamic(() => import("../components/Grid"), {
@@ -34,6 +35,12 @@ export default function Home() {
                     But a recent study shows that the celebrated appetizer may be linked to a series
                     of rabies cases springing up around the country.
                 </p>
+                <Buttons />
+
+                <h3>Flowbite Buttons</h3>
+                <Button>Flowbite Button 1</Button>
+                <Button>Flowbite Button 2</Button>
+                <Button>Flowbite Button 3</Button>
             </article>
 
             <Buttons />
