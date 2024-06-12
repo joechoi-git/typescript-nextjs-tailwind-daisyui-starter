@@ -65,16 +65,19 @@ interface Props {
 
 export default function GridV3({ ...rest }: Props): React.JSX.Element {
     const [data, setData] = React.useState(() => MakeData(1000));
-    const rerender = () => setData(() => MakeData(1000));
-
     const [columns] = React.useState(() => [...defaultColumns]);
-
     const [columnVisibility, setColumnVisibility] = React.useState({});
     const [columnOrder, setColumnOrder] = React.useState<ColumnOrderState>([]);
     const [pagination, setPagination] = React.useState<PaginationState>({
         pageIndex: 0,
         pageSize: 10
     });
+
+    const rerender = () => setData(() => MakeData(1000));
+
+    const randomizeColumns = () => {
+        table.setColumnOrder(shuffleArray(table.getAllLeafColumns().map((d) => d.id)));
+    };
 
     const table = useReactTable({
         data,
@@ -96,52 +99,8 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
         debugColumns: true
     });
 
-    const randomizeColumns = () => {
-        table.setColumnOrder(shuffleArray(table.getAllLeafColumns().map((d) => d.id)));
-    };
-
     return (
         <div {...rest}>
-            <div className="inline-block border border-black shadow rounded">
-                <div className="px-1 border-b border-black">
-                    <label>
-                        <input
-                            {...{
-                                type: "checkbox",
-                                checked: table.getIsAllColumnsVisible(),
-                                onChange: table.getToggleAllColumnsVisibilityHandler()
-                            }}
-                        />{" "}
-                        Toggle All
-                    </label>
-                </div>
-                {table.getAllLeafColumns().map((column) => {
-                    return (
-                        <div key={column.id} className="px-1">
-                            <label>
-                                <input
-                                    {...{
-                                        type: "checkbox",
-                                        checked: column.getIsVisible(),
-                                        onChange: column.getToggleVisibilityHandler()
-                                    }}
-                                />{" "}
-                                {column.id}
-                            </label>
-                        </div>
-                    );
-                })}
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-                <button onClick={() => rerender()} className="border p-1">
-                    Regenerate
-                </button>
-                <button onClick={() => randomizeColumns()} className="border p-1">
-                    Shuffle Columns
-                </button>
-            </div>
-
             <table>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
@@ -206,71 +165,111 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                     ))}
                 </tfoot>
             </table>
-            <div className="h-4" />
-            <div className="flex items-center gap-2">
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.firstPage()}
-                    disabled={!table.getCanPreviousPage()}
-                >
-                    {"<<"}
-                </button>
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.previousPage()}
-                    disabled={!table.getCanPreviousPage()}
-                >
-                    {"<"}
-                </button>
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.nextPage()}
-                    disabled={!table.getCanNextPage()}
-                >
-                    {">"}
-                </button>
-                <button
-                    className="border rounded p-1"
-                    onClick={() => table.lastPage()}
-                    disabled={!table.getCanNextPage()}
-                >
-                    {">>"}
-                </button>
-                <span className="flex items-center gap-1">
-                    <div>Page</div>
-                    <strong>
-                        {table.getState().pagination.pageIndex + 1} of{" "}
-                        {table.getPageCount().toLocaleString()}
-                    </strong>
-                </span>
-                <span className="flex items-center gap-1">
-                    | Go to page:
-                    <input
-                        type="number"
-                        defaultValue={table.getState().pagination.pageIndex + 1}
+
+            <div className="flex space-between">
+                <div className="inline-block p-2 border border-black shadow rounded">
+                    <div className="px-1 border-b border-black">
+                        <label>
+                            <input
+                                {...{
+                                    type: "checkbox",
+                                    checked: table.getIsAllColumnsVisible(),
+                                    onChange: table.getToggleAllColumnsVisibilityHandler()
+                                }}
+                            />{" "}
+                            Toggle All
+                        </label>
+                    </div>
+                    {table.getAllLeafColumns().map((column) => {
+                        return (
+                            <div key={column.id} className="px-1">
+                                <label>
+                                    <input
+                                        {...{
+                                            type: "checkbox",
+                                            checked: column.getIsVisible(),
+                                            onChange: column.getToggleVisibilityHandler()
+                                        }}
+                                    />{" "}
+                                    {column.id}
+                                </label>
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    <button onClick={() => rerender()} className="border p-1">
+                        Regenerate
+                    </button>
+                    <button onClick={() => randomizeColumns()} className="border p-1">
+                        Shuffle Columns
+                    </button>
+                </div>
+                <div className="flex items-center gap-2">
+                    <button
+                        className="border rounded p-1"
+                        onClick={() => table.firstPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {"<<"}
+                    </button>
+                    <button
+                        className="border rounded p-1"
+                        onClick={() => table.previousPage()}
+                        disabled={!table.getCanPreviousPage()}
+                    >
+                        {"<"}
+                    </button>
+                    <button
+                        className="border rounded p-1"
+                        onClick={() => table.nextPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {">"}
+                    </button>
+                    <button
+                        className="border rounded p-1"
+                        onClick={() => table.lastPage()}
+                        disabled={!table.getCanNextPage()}
+                    >
+                        {">>"}
+                    </button>
+                    <span className="flex items-center gap-1">
+                        <div>Page</div>
+                        <strong>
+                            {table.getState().pagination.pageIndex + 1} of{" "}
+                            {table.getPageCount().toLocaleString()}
+                        </strong>
+                    </span>
+                    <span className="flex items-center gap-1">
+                        | Go to page:
+                        <input
+                            type="number"
+                            defaultValue={table.getState().pagination.pageIndex + 1}
+                            onChange={(e) => {
+                                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                                table.setPageIndex(page);
+                            }}
+                            className="border p-1 rounded w-16"
+                        />
+                    </span>
+                    <select
+                        value={table.getState().pagination.pageSize}
                         onChange={(e) => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                            table.setPageIndex(page);
+                            table.setPageSize(Number(e.target.value));
                         }}
-                        className="border p-1 rounded w-16"
-                    />
-                </span>
-                <select
-                    value={table.getState().pagination.pageSize}
-                    onChange={(e) => {
-                        table.setPageSize(Number(e.target.value));
-                    }}
-                >
-                    {[10, 20, 30, 40, 50].map((pageSize) => (
-                        <option key={pageSize} value={pageSize}>
-                            Show {pageSize}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <div>
-                Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
-                {table.getRowCount().toLocaleString()} Rows
+                    >
+                        {[10, 20, 30, 40, 50].map((pageSize) => (
+                            <option key={pageSize} value={pageSize}>
+                                Show {pageSize}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
+                    {table.getRowCount().toLocaleString()} Rows
+                </div>
             </div>
         </div>
     );
