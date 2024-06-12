@@ -17,6 +17,10 @@ const GridV2 = dynamic(() => import("../components/GridV2"), {
     ssr: false,
     loading: () => <div className="h-[500px]">Loading...</div>
 });
+const GridV3 = dynamic(() => import("../components/GridV3"), {
+    ssr: false,
+    loading: () => <div className="h-[500px]">Loading...</div>
+});
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);
@@ -45,6 +49,8 @@ export default function Home() {
             <Grid className="w-full h-[500px] overflow-scroll" />
 
             <GridV2 className="w-full h-[500px] overflow-scroll" />
+
+            <GridV3 className="w-full h-[500px] overflow-scroll" />
 
             <section className="flex p-4">
                 <Progress value={0} />
