@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -7,6 +8,12 @@ import Buttons from "../components/Buttons";
 import Progress from "../components/Progress";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 import AgGrid from "../components/AgGrid";
+
+// disabled SSR render because the table data is randomly generated
+const Grid = dynamic(() => import("../components/Grid"), {
+    ssr: false,
+    loading: () => <div>Loading...</div>
+});
 
 export default function Home() {
     const { theme } = React.useContext(ThemeContext);
@@ -33,6 +40,8 @@ export default function Home() {
             <Buttons />
 
             <AgGrid className="w-full h-[500px] ag-theme-quartz" />
+
+            <Grid className="w-full overflow-hidden" />
 
             <section className="flex p-4">
                 <Progress value={0} />
