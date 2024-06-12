@@ -12,6 +12,7 @@ import {
 } from "@tanstack/react-table";
 
 import { MakeData, Person } from "../utils/MakeData";
+import { shuffleArray } from "@/utils/Helper";
 
 const defaultColumns: ColumnDef<Person>[] = [
     {
@@ -94,7 +95,12 @@ export default function GridV2({ ...rest }: Props): React.JSX.Element {
     });
 
     const randomizeColumns = () => {
-        table.setColumnOrder(table.getAllLeafColumns().map((d) => d.id)); // faker.helpers.shuffle
+        console.log(
+            "randomizeColumns",
+            table.getAllLeafColumns().map((d) => d.id),
+            shuffleArray(table.getAllLeafColumns().map((d) => d.id))
+        );
+        table.setColumnOrder(shuffleArray(table.getAllLeafColumns().map((d) => d.id)));
     };
 
     return (
