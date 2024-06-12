@@ -101,7 +101,7 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
 
     return (
         <div {...rest}>
-            <table className="border-separate border-spacing-2 border border-slate-400">
+            <table className="border-separate border-spacing-2 border border-primary rounded">
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
@@ -110,7 +110,7 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                                     <th
                                         key={header.id}
                                         colSpan={header.colSpan}
-                                        className="border border-slate-300 p-2"
+                                        className="border border-secondary rounded p-2"
                                     >
                                         <div
                                             {...{
@@ -145,7 +145,7 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                     {table.getRowModel().rows.map((row) => (
                         <tr key={row.id}>
                             {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id} className="border border-slate-300 p-2">
+                                <td key={cell.id} className="border border-primary rounded p-2">
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </td>
                             ))}
@@ -171,8 +171,8 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
             </table>
 
             <div className="flex space-between gap-4 items-start mt-8">
-                <div className="inline-block p-2 border border-black shadow rounded">
-                    <div className="px-1 border-b border-black">
+                <div className="inline-block p-2 border border-secondary rounded">
+                    <div className="px-1 border-b border-secondary">
                         <label>
                             <input
                                 {...{
@@ -202,35 +202,41 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                     })}
                 </div>
                 <div className="flex items-center gap-4">
-                    <button onClick={() => rerender()} className="border rounded p-1">
+                    <button
+                        onClick={() => rerender()}
+                        className="border border-secondary rounded p-1"
+                    >
                         Regenerate
                     </button>
-                    <button onClick={() => randomizeColumns()} className="border rounded p-1">
+                    <button
+                        onClick={() => randomizeColumns()}
+                        className="border border-secondary rounded p-1"
+                    >
                         Shuffle Columns
                     </button>
                     <button
-                        className="border rounded p-1"
+                        className="border border-secondary rounded p-1"
                         onClick={() => table.firstPage()}
                         disabled={!table.getCanPreviousPage()}
                     >
                         {"<<"}
                     </button>
                     <button
-                        className="border rounded p-1"
+                        className="border border-secondary rounded p-1"
                         onClick={() => table.previousPage()}
                         disabled={!table.getCanPreviousPage()}
                     >
                         {"<"}
                     </button>
                     <button
-                        className="border rounded p-1"
+                        className="border border-secondary rounded p-1"
                         onClick={() => table.nextPage()}
                         disabled={!table.getCanNextPage()}
                     >
                         {">"}
                     </button>
                     <button
-                        className="border rounded p-1"
+                        className="border border-secondary rounded p-1"
                         onClick={() => table.lastPage()}
                         disabled={!table.getCanNextPage()}
                     >
@@ -252,7 +258,7 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                                 table.setPageIndex(page);
                             }}
-                            className="border p-1 rounded w-16"
+                            className="border border-secondary rounded w-16"
                         />
                     </span>
                     <select
