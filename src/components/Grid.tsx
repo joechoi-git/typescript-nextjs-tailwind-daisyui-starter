@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React from "react";
 
 import {
@@ -7,6 +8,8 @@ import {
     ColumnDef,
     // eslint-disable-next-line import/named
     PaginationState,
+    // eslint-disable-next-line import/named
+    ColumnOrderState,
     // eslint-disable-next-line import/named
     Table,
     flexRender,
@@ -18,99 +21,127 @@ import {
 } from "@tanstack/react-table";
 
 import { MakeData, Person } from "../utils/MakeData";
+import { shuffleArray } from "../utils/Helper";
+
+const defaultColumns: ColumnDef<Person>[] = [
+    {
+        accessorKey: "firstName",
+        cell: (info) => info.getValue(),
+        header: () => <span>First Name</span>,
+        footer: (props) => props.column.id
+    },
+    {
+        accessorFn: (row) => row.lastName,
+        id: "lastName",
+        cell: (info) => info.getValue(),
+        header: () => <span>Last Name</span>,
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "age",
+        header: () => "Age",
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "visits",
+        header: () => <span>Visits</span>,
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "status",
+        header: "Status",
+        footer: (props) => props.column.id
+    },
+    {
+        accessorKey: "progress",
+        header: "Profile Progress",
+        footer: (props) => props.column.id
+    }
+];
 
 interface Props {
     [rest: string]: any;
 }
 
-export default function Grid({ ...rest }: Props): React.JSX.Element {
-    const rerender = React.useReducer(() => ({}), {})[1];
-
-    const columns = React.useMemo<ColumnDef<Person>[]>(
-        () => [
-            {
-                accessorKey: "firstName",
-                cell: (info) => info.getValue(),
-                header: () => <span>First Name</span>,
-                footer: (props) => props.column.id
-            },
-            {
-                accessorFn: (row) => row.lastName,
-                id: "lastName",
-                cell: (info) => info.getValue(),
-                header: () => <span>Last Name</span>,
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "age",
-                header: () => "Age",
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "visits",
-                header: () => <span>Visits</span>,
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "status",
-                header: "Status",
-                footer: (props) => props.column.id
-            },
-            {
-                accessorKey: "progress",
-                header: "Profile Progress",
-                footer: (props) => props.column.id
-            }
-        ],
-        []
-    );
-
+export default function GridV3({ ...rest }: Props): React.JSX.Element {
     const [data, setData] = React.useState(() => MakeData(1000));
-    const refreshData = () => setData(() => MakeData(1000));
+    const rerender = () => setData(() => MakeData(1000));
 
-    return (
-        <div {...rest}>
-            <MyTable
-                {...{
-                    data,
-                    columns
-                }}
-            />
-            <hr />
-            <div>
-                <button onClick={() => rerender()}>Force Rerender</button>
-            </div>
-            <div>
-                <button onClick={() => refreshData()}>Refresh Data</button>
-            </div>
-        </div>
-    );
-}
+    const [columns] = React.useState(() => [...defaultColumns]);
 
-function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[] }) {
+    const [columnVisibility, setColumnVisibility] = React.useState({});
+    const [columnOrder, setColumnOrder] = React.useState<ColumnOrderState>([]);
     const [pagination, setPagination] = React.useState<PaginationState>({
         pageIndex: 0,
         pageSize: 10
     });
 
     const table = useReactTable({
-        columns,
         data,
-        debugTable: false,
+        columns,
+        state: {
+            columnVisibility,
+            columnOrder,
+            pagination
+        },
+        onColumnVisibilityChange: setColumnVisibility,
+        onColumnOrderChange: setColumnOrder,
         getCoreRowModel: getCoreRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
         onPaginationChange: setPagination,
-        //no need to pass pageCount or rowCount with client-side pagination as it is calculated automatically
-        state: {
-            pagination
-        }
-        // autoResetPageIndex: false, // turn off page index reset when sorting or filtering
+        debugTable: true,
+        debugHeaders: true,
+        debugColumns: true
     });
 
+    const randomizeColumns = () => {
+        table.setColumnOrder(shuffleArray(table.getAllLeafColumns().map((d) => d.id)));
+    };
+
     return (
-        <>
+        <div {...rest}>
+            <div className="inline-block border border-black shadow rounded">
+                <div className="px-1 border-b border-black">
+                    <label>
+                        <input
+                            {...{
+                                type: "checkbox",
+                                checked: table.getIsAllColumnsVisible(),
+                                onChange: table.getToggleAllColumnsVisibilityHandler()
+                            }}
+                        />{" "}
+                        Toggle All
+                    </label>
+                </div>
+                {table.getAllLeafColumns().map((column) => {
+                    return (
+                        <div key={column.id} className="px-1">
+                            <label>
+                                <input
+                                    {...{
+                                        type: "checkbox",
+                                        checked: column.getIsVisible(),
+                                        onChange: column.getToggleVisibilityHandler()
+                                    }}
+                                />{" "}
+                                {column.id}
+                            </label>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+                <button onClick={() => rerender()} className="border p-1">
+                    Regenerate
+                </button>
+                <button onClick={() => randomizeColumns()} className="border p-1">
+                    Shuffle Columns
+                </button>
+            </div>
+
             <table>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
@@ -148,25 +179,34 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                     ))}
                 </thead>
                 <tbody>
-                    {table.getRowModel().rows.map((row) => {
-                        return (
-                            <tr key={row.id}>
-                                {row.getVisibleCells().map((cell) => {
-                                    return (
-                                        <td key={cell.id}>
-                                            {flexRender(
-                                                cell.column.columnDef.cell,
-                                                cell.getContext()
-                                            )}
-                                        </td>
-                                    );
-                                })}
-                            </tr>
-                        );
-                    })}
+                    {table.getRowModel().rows.map((row) => (
+                        <tr key={row.id}>
+                            {row.getVisibleCells().map((cell) => (
+                                <td key={cell.id}>
+                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                </td>
+                            ))}
+                        </tr>
+                    ))}
                 </tbody>
+                <tfoot>
+                    {table.getFooterGroups().map((footerGroup) => (
+                        <tr key={footerGroup.id}>
+                            {footerGroup.headers.map((header) => (
+                                <th key={header.id} colSpan={header.colSpan}>
+                                    {header.isPlaceholder
+                                        ? null
+                                        : flexRender(
+                                              header.column.columnDef.footer,
+                                              header.getContext()
+                                          )}
+                                </th>
+                            ))}
+                        </tr>
+                    ))}
+                </tfoot>
             </table>
-            <div className="h-2" />
+            <div className="h-4" />
             <div className="flex items-center gap-2">
                 <button
                     className="border rounded p-1"
@@ -232,7 +272,7 @@ function MyTable({ data, columns }: { data: Person[]; columns: ColumnDef<Person>
                 Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
                 {table.getRowCount().toLocaleString()} Rows
             </div>
-        </>
+        </div>
     );
 }
 
