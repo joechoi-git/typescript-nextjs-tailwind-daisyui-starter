@@ -11,7 +11,7 @@ import ThemeSwitcher from "../components/ThemeSwitcher";
 // disabled SSR render because the table data is randomly generated
 const Grid = dynamic(() => import("../components/Grid"), {
     ssr: false,
-    loading: () => <div className="h-[800px]">Loading...</div>
+    loading: () => <div>Loading...</div>
 });
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
 
             <Buttons />
 
-            <Grid className="w-full h-[800px] overflow-scroll" />
+            <Grid className="w-full overflow-hidden" />
 
             <section className="flex p-4">
                 <Progress value={0} />

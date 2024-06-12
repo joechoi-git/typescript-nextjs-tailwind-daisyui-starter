@@ -101,13 +101,17 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
 
     return (
         <div {...rest}>
-            <table>
+            <table className="border-separate border-spacing-2 border border-slate-400">
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header) => {
                                 return (
-                                    <th key={header.id} colSpan={header.colSpan}>
+                                    <th
+                                        key={header.id}
+                                        colSpan={header.colSpan}
+                                        className="border border-slate-300 p-2"
+                                    >
                                         <div
                                             {...{
                                                 className: header.column.getCanSort()
@@ -141,7 +145,7 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                     {table.getRowModel().rows.map((row) => (
                         <tr key={row.id}>
                             {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id}>
+                                <td key={cell.id} className="border border-slate-300 p-2">
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </td>
                             ))}
@@ -166,7 +170,7 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                 </tfoot>
             </table>
 
-            <div className="flex space-between">
+            <div className="flex space-between gap-4 items-start mt-8">
                 <div className="inline-block p-2 border border-black shadow rounded">
                     <div className="px-1 border-b border-black">
                         <label>
@@ -197,15 +201,13 @@ export default function GridV3({ ...rest }: Props): React.JSX.Element {
                         );
                     })}
                 </div>
-                <div className="flex flex-wrap gap-2">
-                    <button onClick={() => rerender()} className="border p-1">
+                <div className="flex items-center gap-4">
+                    <button onClick={() => rerender()} className="border rounded p-1">
                         Regenerate
                     </button>
-                    <button onClick={() => randomizeColumns()} className="border p-1">
+                    <button onClick={() => randomizeColumns()} className="border rounded p-1">
                         Shuffle Columns
                     </button>
-                </div>
-                <div className="flex items-center gap-2">
                     <button
                         className="border rounded p-1"
                         onClick={() => table.firstPage()}
