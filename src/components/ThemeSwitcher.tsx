@@ -22,7 +22,7 @@ const ThemeSwitcher: React.FC = () => {
                 <option value="system">system</option>
                 <option value="light">light</option>
                 <option value="dark">dark</option>
-                <option value="cupcake">Cupcake</option>
+                <option value="cupcake">cupcake</option>
                 <option value="bumblebee">bumblebee</option>
                 <option value="emerald">emerald</option>
                 <option value="corporate">corporate</option>
