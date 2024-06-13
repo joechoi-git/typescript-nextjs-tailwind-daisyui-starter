@@ -3682,12 +3682,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^6":
-  version: 6.0.0
-  resolution: "husky@npm:6.0.0"
+"husky@npm:^9":
+  version: 9.0.11
+  resolution: "husky@npm:9.0.11"
   bin:
-    husky: lib/bin.js
-  checksum: 10c0/00dca95e24f6174f150ba1ee746948a89a3ff20b460ecad7bc2e4c2a76fe5b78bef1400c84bc2bade6588392c37baf57c173f49dc123fdbc7c7a71e4d412fb67
+    husky: bin.mjs
+  checksum: 10c0/2c787dcf74a837fc9a4fea7da907509d4bd9a289f4ea10ecc9d86279e4d4542b0f5f6443a619bccae19e265f2677172cc2b86aae5c932a35a330cc227d914605
   languageName: node
   linkType: hard
 
@@ -7012,7 +7012,7 @@ __metadata:
     eslint-plugin-jsx-a11y: "npm:^6"
     eslint-plugin-prettier: "npm:^5"
     eslint-plugin-react: "npm:^7"
-    husky: "npm:^6"
+    husky: "npm:^9"
     jest: "npm:^29"
     jest-environment-jsdom: "npm:^29"
     lint-staged: "npm:^15"
