@@ -5,6 +5,7 @@
         "plugin:react/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:prettier/recommended",
+        "plugin:jest/recommended",
         "next/core-web-vitals"
     ],
     "plugins": ["react", "import", "jsx-a11y"],
@@ -19,12 +20,12 @@
                 "endOfLine": "auto"
             }
         ]
-    },    
+    },
     "parserOptions": {
         "ecmaVersion": 2021,
         "sourceType": "module",
         "ecmaFeatures": {
-        "jsx": true
+            "jsx": true
         }
     },
     "env": {
@@ -34,8 +35,7 @@
     },
     "settings": {
         "react": {
-        "version": "detect"
+            "version": "detect"
         }
     }
 }
-    
