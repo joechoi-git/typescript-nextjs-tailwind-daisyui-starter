@@ -1055,7 +1055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^10.1.0":
+"@testing-library/dom@npm:^10":
   version: 10.1.0
   resolution: "@testing-library/dom@npm:10.1.0"
   dependencies:
@@ -1124,7 +1124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/user-event@npm:^14.5.2":
+"@testing-library/user-event@npm:^14":
   version: 14.5.2
   resolution: "@testing-library/user-event@npm:14.5.2"
   peerDependencies:
@@ -5481,48 +5481,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-go-data@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "next-go-data@workspace:."
-  dependencies:
-    "@jest/globals": "npm:^29"
-    "@next/bundle-analyzer": "npm:^14"
-    "@tailwindcss/typography": "npm:latest"
-    "@tanstack/react-table": "npm:^8"
-    "@testing-library/dom": "npm:^10.1.0"
-    "@testing-library/jest-dom": "npm:^6"
-    "@testing-library/react": "npm:^16"
-    "@testing-library/user-event": "npm:^14.5.2"
-    "@types/jest": "npm:^29"
-    "@types/node": "npm:^20"
-    "@types/react": "npm:^18"
-    "@types/react-dom": "npm:^18"
-    "@types/react-test-renderer": "npm:^18"
-    daisyui: "npm:^4"
-    eslint: "npm:^8"
-    eslint-config-next: "npm:^14"
-    eslint-config-prettier: "npm:^9"
-    eslint-plugin-import: "npm:^2"
-    eslint-plugin-jest: "npm:^28"
-    eslint-plugin-jsx-a11y: "npm:^6"
-    eslint-plugin-prettier: "npm:^5"
-    eslint-plugin-react: "npm:^7"
-    husky: "npm:^9"
-    jest: "npm:^29"
-    jest-environment-jsdom: "npm:^29"
-    lint-staged: "npm:^15"
-    next: "npm:^14"
-    postcss: "npm:^8"
-    prettier: "npm:^3"
-    react: "npm:^18"
-    react-dom: "npm:^18"
-    react-test-renderer: "npm:^18"
-    tailwindcss: "npm:^3"
-    ts-jest: "npm:^29"
-    typescript: "npm:^5"
-  languageName: unknown
-  linkType: soft
-
 "next@npm:^14":
   version: 14.2.4
   resolution: "next@npm:14.2.4"
@@ -7324,6 +7282,48 @@ __metadata:
   checksum: 10c0/74253d7dc488eb28b6b2711cf31f5a9dcefc9c41b0681fd1c178ed0a1681b4468581a3626d39cd4df7aee3d3927ab62be06aa9ca74e5baf81827f61641445b77
   languageName: node
   linkType: hard
+
+"typescript-nextjs-tailwind-daisyui-starter@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "typescript-nextjs-tailwind-daisyui-starter@workspace:."
+  dependencies:
+    "@jest/globals": "npm:^29"
+    "@next/bundle-analyzer": "npm:^14"
+    "@tailwindcss/typography": "npm:latest"
+    "@tanstack/react-table": "npm:^8"
+    "@testing-library/dom": "npm:^10"
+    "@testing-library/jest-dom": "npm:^6"
+    "@testing-library/react": "npm:^16"
+    "@testing-library/user-event": "npm:^14"
+    "@types/jest": "npm:^29"
+    "@types/node": "npm:^20"
+    "@types/react": "npm:^18"
+    "@types/react-dom": "npm:^18"
+    "@types/react-test-renderer": "npm:^18"
+    daisyui: "npm:^4"
+    eslint: "npm:^8"
+    eslint-config-next: "npm:^14"
+    eslint-config-prettier: "npm:^9"
+    eslint-plugin-import: "npm:^2"
+    eslint-plugin-jest: "npm:^28"
+    eslint-plugin-jsx-a11y: "npm:^6"
+    eslint-plugin-prettier: "npm:^5"
+    eslint-plugin-react: "npm:^7"
+    husky: "npm:^9"
+    jest: "npm:^29"
+    jest-environment-jsdom: "npm:^29"
+    lint-staged: "npm:^15"
+    next: "npm:^14"
+    postcss: "npm:^8"
+    prettier: "npm:^3"
+    react: "npm:^18"
+    react-dom: "npm:^18"
+    react-test-renderer: "npm:^18"
+    tailwindcss: "npm:^3"
+    ts-jest: "npm:^29"
+    typescript: "npm:^5"
+  languageName: unknown
+  linkType: soft
 
 "typescript@npm:^5":
   version: 5.4.5
