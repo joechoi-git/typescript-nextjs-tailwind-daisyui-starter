@@ -42,6 +42,10 @@ Runs the ES Lint checker.
 
 Runs the Jest unit testing.
 
+### `yarn test:update`
+
+Updates the Jest snapshots.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
