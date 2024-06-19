@@ -12,6 +12,45 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ag-grid-community/client-side-row-model@npm:^31.3.2":
+  version: 31.3.2
+  resolution: "@ag-grid-community/client-side-row-model@npm:31.3.2"
+  dependencies:
+    "@ag-grid-community/core": "npm:31.3.2"
+    tslib: "npm:^2.3.0"
+  checksum: 10c0/a00df8a32c4487ad9ea7c293056b1a1108e4c05a618e9d873ae9291c13e61d08720a8b2688f69d2157271647c41f3ff6efd9248ca537e3e432e2230b67c128ee
+  languageName: node
+  linkType: hard
+
+"@ag-grid-community/core@npm:31.3.2, @ag-grid-community/core@npm:^31.3.2":
+  version: 31.3.2
+  resolution: "@ag-grid-community/core@npm:31.3.2"
+  dependencies:
+    tslib: "npm:^2.3.0"
+  checksum: 10c0/dc06409584d52bf77f0c4d7e27da8b0c5feecac10089baaacde7c3d89fb07f0478d605c9f050ab87f524ae046b7fa803ac6f60d5dd74c44213856322e8832f5a
+  languageName: node
+  linkType: hard
+
+"@ag-grid-community/react@npm:^31.3.2":
+  version: 31.3.2
+  resolution: "@ag-grid-community/react@npm:31.3.2"
+  dependencies:
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    "@ag-grid-community/core": 31.3.2
+    react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/4c9c5abcb37f7ecc42844c4d83ec1bb55981e4362ec4feae251b2b3795040be0e113ebeaff9e97d7f3cf79600aa75969847ec9617b355448c84a11935fff3309
+  languageName: node
+  linkType: hard
+
+"@ag-grid-community/styles@npm:^31.3.2":
+  version: 31.3.2
+  resolution: "@ag-grid-community/styles@npm:31.3.2"
+  checksum: 10c0/65ad498da1d5275c38fa4f123ffe1ce9e871038cd842ff4a34ca316727b6a354650761bd803887f4e614eaf73a4e1bf65a5d541c7cac13a5d080bfbbedbccc09
+  languageName: node
+  linkType: hard
+
 "@alloc/quick-lru@npm:^5.2.0":
   version: 5.2.0
   resolution: "@alloc/quick-lru@npm:5.2.0"
@@ -7194,7 +7233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.4.0, tslib@npm:^2.6.2":
+"tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2":
   version: 2.6.3
   resolution: "tslib@npm:2.6.3"
   checksum: 10c0/2598aef53d9dbe711af75522464b2104724d6467b26a60f2bdac8297d2b5f1f6b86a71f61717384aa8fd897240467aaa7bcc36a0700a0faf751293d1331db39a
@@ -7287,6 +7326,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "typescript-nextjs-tailwind-daisyui-starter@workspace:."
   dependencies:
+    "@ag-grid-community/client-side-row-model": "npm:^31.3.2"
+    "@ag-grid-community/core": "npm:^31.3.2"
+    "@ag-grid-community/react": "npm:^31.3.2"
+    "@ag-grid-community/styles": "npm:^31.3.2"
     "@jest/globals": "npm:^29"
     "@next/bundle-analyzer": "npm:^14"
     "@tailwindcss/typography": "npm:latest"
