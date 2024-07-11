@@ -14,8 +14,8 @@ const Grid = dynamic(() => import("../components/Grid"), {
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <article className="prose">
+        <>
+            <article className="prose !max-w-none">
                 <h1>Garlic bread with cheese: What the science tells us</h1>
                 <p>
                     For years parents have espoused the health benefits of eating garlic bread with
@@ -30,7 +30,7 @@ export default function Home() {
 
             <Buttons />
 
-            <Grid className="w-full overflow-hidden" />
+            <Grid className="w-full overflow-x-auto" />
 
             <section className="flex p-4">
                 <Progress value={0} />
@@ -96,7 +96,7 @@ export default function Home() {
 
             <div className="overflow-x-auto p-4">
                 <table className="table">
-                    <thead>
+                    <thead className="bg-base-200">
                         <tr>
                             <th></th>
                             <th>Name</th>
@@ -126,6 +126,6 @@ export default function Home() {
                     </tbody>
                 </table>
             </div>
-        </main>
+        </>
     );
 }
