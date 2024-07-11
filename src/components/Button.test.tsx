@@ -1,17 +1,11 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, jest } from "@jest/globals";
-import renderer from "react-test-renderer";
 import Button from "./Button";
 
 describe("Button component", () => {
     // eslint-disable-next-line jest/expect-expect
     it("renders without crashing", () => {
         render(<Button />);
-    });
-
-    it("Matches DOM Snapshot", () => {
-        const domTree = renderer.create(<Button />).toJSON();
-        expect(domTree).toMatchSnapshot();
     });
 
     it("renders with children text", () => {
@@ -37,5 +31,10 @@ describe("Button component", () => {
         render(<Button data-testid="custom-button">Click me</Button>);
         const buttonElement = screen.getByTestId("custom-button");
         expect(buttonElement).toBeInTheDocument();
+    });
+
+    it("matches the snapshot", () => {
+        const { asFragment } = render(<Button />);
+        expect(asFragment()).toMatchSnapshot();
     });
 });

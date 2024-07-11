@@ -38,4 +38,9 @@ describe("Buttons Component", () => {
         fireEvent.click(button3);
         expect(screen.getByText("Clicked 3 times.")).toBeInTheDocument();
     });
+
+    it("matches the snapshot", () => {
+        const { asFragment } = render(<Buttons />);
+        expect(asFragment()).toMatchSnapshot();
+    });
 });
