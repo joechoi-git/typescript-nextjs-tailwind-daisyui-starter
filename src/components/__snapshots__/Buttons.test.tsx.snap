@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buttons Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="p-4"
+  >
+    <p>
+      Clicked 0 time.
+    </p>
+    <div
+      class="flex justify-center w-full py-2 gap-2"
+    >
+      <button>
+        button 1
+      </button>
+      <button>
+        button 2
+      </button>
+      <button>
+        button 3
+      </button>
+    </div>
+  </section>
+</DocumentFragment>
+`;

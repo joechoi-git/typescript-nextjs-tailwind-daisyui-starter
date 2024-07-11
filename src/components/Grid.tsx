@@ -1,16 +1,12 @@
+/* eslint-disable import/named */
 /* eslint-disable indent */
 import React from "react";
 
 import {
-    // eslint-disable-next-line import/named
     Column,
-    // eslint-disable-next-line import/named
     ColumnDef,
-    // eslint-disable-next-line import/named
     PaginationState,
-    // eslint-disable-next-line import/named
     ColumnOrderState,
-    // eslint-disable-next-line import/named
     Table,
     flexRender,
     getCoreRowModel,

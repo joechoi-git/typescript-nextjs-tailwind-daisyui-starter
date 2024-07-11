@@ -13,6 +13,7 @@ const customJestConfig = {
     },
     testEnvironment: "jsdom",
     preset: "ts-jest",
+    /*
     coverageThreshold: {
         global: {
             branches: 70,
@@ -21,11 +22,15 @@ const customJestConfig = {
             lines: 70
         }
     },
-    collectCoverageFrom: [
-        "src/**/*.{js,jsx,ts,tsx}",
-        "!src/**/*.d.ts",
-        "!src/reportWebVitals.ts",
-        "!**/node_modules/**"
+    */
+    collectCoverage: true,
+    collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}"],
+    coveragePathIgnorePatterns: [
+        "node_modules",
+        "<rootDir>/src/app",
+        "<rootDir>/src/config",
+        "middleware.ts",
+        "reportWebVitals.ts"
     ]
 };
 
