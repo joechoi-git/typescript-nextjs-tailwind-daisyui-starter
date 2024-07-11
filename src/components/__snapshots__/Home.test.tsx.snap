@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home matches the snapshot 1`] = `
+<DocumentFragment>
+  <article
+    class="prose !max-w-none"
+  >
+    <h1>
+      Garlic bread with cheese: What the science tells us
+    </h1>
+    <p>
+      For years parents have espoused the health benefits of eating garlic bread with cheese to their children, with the food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for Halloween.
+    </p>
+    <p>
+      But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases springing up around the country.
+    </p>
+  </article>
+  <section
+    class="py-4"
+  >
+    <p>
+      Clicked 0 time.
+    </p>
+    <div
+      class="flex w-full py-2 gap-2"
+    >
+      <button
+        class="btn btn-primary "
+      >
+        button 1
+      </button>
+      <button
+        class="btn btn-primary "
+      >
+        button 2
+      </button>
+      <button
+        class="btn btn-primary "
+      >
+        button 3
+      </button>
+    </div>
+  </section>
+  <div>
+    Loading...
+  </div>
+  <section
+    class="flex p-4"
+  >
+    <div
+      class="radial-progress bg-primary text-primary-content border-4 border-primary"
+      role="progressbar"
+      style="--value: 0;"
+    >
+      0%
+    </div>
+    <div
+      class="radial-progress bg-primary text-primary-content border-4 border-primary"
+      role="progressbar"
+      style="--value: 20;"
+    >
+      20%
+    </div>
+    <div
+      class="radial-progress bg-primary text-primary-content border-4 border-primary"
+      role="progressbar"
+      style="--value: 40;"
+    >
+      40%
+    </div>
+    <div
+      class="radial-progress bg-primary text-primary-content border-4 border-primary"
+      role="progressbar"
+      style="--value: 60;"
+    >
+      60%
+    </div>
+    <div
+      class="radial-progress bg-primary text-primary-content border-4 border-primary"
+      role="progressbar"
+      style="--value: 80;"
+    >
+      80%
+    </div>
+    <div
+      class="radial-progress bg-primary text-primary-content border-4 border-primary"
+      role="progressbar"
+      style="--value: 100;"
+    >
+      100%
+    </div>
+  </section>
+  <div
+    class="carousel w-full p-4"
+  >
+    <div
+      class="carousel-item w-full"
+      id="item1"
+    >
+      <img
+        alt="1"
+        class="w-full"
+        height="250"
+        src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"
+        width="1000"
+      />
+    </div>
+    <div
+      class="carousel-item w-full"
+      id="item2"
+    >
+      <img
+        alt="2"
+        class="w-full"
+        height="250"
+        src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.jpg"
+        width="1000"
+      />
+    </div>
+    <div
+      class="carousel-item w-full"
+      id="item3"
+    >
+      <img
+        alt="3"
+        class="w-full"
+        height="250"
+        src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.jpg"
+        width="1000"
+      />
+    </div>
+    <div
+      class="carousel-item w-full"
+      id="item4"
+    >
+      <img
+        alt="4"
+        class="w-full"
+        height="250"
+        src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.jpg"
+        width="1000"
+      />
+    </div>
+  </div>
+  <div
+    class="flex justify-center w-full py-2 gap-2"
+  >
+    <a
+      class="btn btn-xs"
+      href="#item1"
+    >
+      1
+    </a>
+    <a
+      class="btn btn-xs"
+      href="#item2"
+    >
+      2
+    </a>
+    <a
+      class="btn btn-xs"
+      href="#item3"
+    >
+      3
+    </a>
+    <a
+      class="btn btn-xs"
+      href="#item4"
+    >
+      4
+    </a>
+  </div>
+  <div
+    class="overflow-x-auto p-4"
+  >
+    <table
+      class="table"
+    >
+      <thead
+        class="bg-base-200"
+      >
+        <tr>
+          <th />
+          <th>
+            Name
+          </th>
+          <th>
+            Job
+          </th>
+          <th>
+            Favorite Color
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>
+            1
+          </th>
+          <td>
+            Cy Ganderton
+          </td>
+          <td>
+            Quality Control Specialist
+          </td>
+          <td>
+            Blue
+          </td>
+        </tr>
+        <tr>
+          <th>
+            2
+          </th>
+          <td>
+            Hart Hagerty
+          </td>
+          <td>
+            Desktop Support Technician
+          </td>
+          <td>
+            Purple
+          </td>
+        </tr>
+        <tr>
+          <th>
+            3
+          </th>
+          <td>
+            Brice Swyre
+          </td>
+          <td>
+            Tax Accountant
+          </td>
+          <td>
+            Red
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
